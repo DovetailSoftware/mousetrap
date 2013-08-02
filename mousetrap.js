@@ -933,8 +933,14 @@
                 return false;
             }
 
+            // If the focused element is a button and the 'enter' key is pressed,
+            // we shouldn't process that key
+            if (element.tagName == 'BUTTON' && e.keyCode === 13) {
+                return true;
+            }
+
             // stop for input, select, and textarea
-            return element.tagName == 'INPUT' || element.tagName == 'SELECT' || element.tagName == 'TEXTAREA' || element.isContentEditable || element.tagName == 'BUTTON';
+            return element.tagName == 'INPUT' || element.tagName == 'SELECT' || element.tagName == 'TEXTAREA' || element.isContentEditable;
         },
 
         /**
